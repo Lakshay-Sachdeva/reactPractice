@@ -1,6 +1,6 @@
 import React from "react";
 
-export const GroceryTable = (data) => {
+export const GroceryTable = ({ list }) => {
   return (
     <>
       <table>
@@ -12,15 +12,14 @@ export const GroceryTable = (data) => {
           </tr>
         </thead>
         <tbody>
-          {/* {data.map((el) => (
-            <tr>
-              <td>{el.name}</td>
-              <td>{el.quantity}</td>
-              <td>
-                <button>{el.status ? "Done" : "Pending"}</button>
-              </td>
-            </tr>
-          ))} */}
+          {list.map((el) => {
+            return (
+              <tr>
+                <td>{el.name}</td>
+                <td>{el.quantity}</td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </>
