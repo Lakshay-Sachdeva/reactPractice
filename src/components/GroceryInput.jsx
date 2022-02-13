@@ -1,6 +1,7 @@
 import React from "react";
 
-export const GroceryInput = ({ handleInput, addItem, name, quantity }) => {
+export const GroceryInput = ({ handleInput, addItem, data }) => {
+  const { name, quantity } = data;
   return (
     <div>
       <h1>Grocery Requirement List</h1>

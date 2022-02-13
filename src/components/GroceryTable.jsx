@@ -17,6 +17,11 @@ export const GroceryTable = ({ list }) => {
               <tr>
                 <td>{el.name}</td>
                 <td>{el.quantity}</td>
+                <td>
+                  <button onClick={(id) => {}}>
+                    {el.status ? "Done" : "Not Yet"}
+                  </button>
+                </td>
               </tr>
             );
           })}

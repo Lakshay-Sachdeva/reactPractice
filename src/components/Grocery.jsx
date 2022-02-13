@@ -1,3 +1,4 @@
+import { nanoid } from "nanoid";
 import { useState } from "react";
 import { GroceryInput } from "./GroceryInput";
 import { GroceryTable } from "./GroceryTable";
@@ -6,7 +7,8 @@ export const Grocery = () => {
   const [data, setData] = useState({
     name: "",
     quantity: "",
-    status: false
+    status: false,
+    id: nanoid(5)
   });
 
   const [list, setList] = useState([]);
@@ -18,8 +20,6 @@ export const Grocery = () => {
     console.log(data);
   };
 
-  const { name, quantity } = data;
-
   const addItem = () => {
     setList([...list, data]);
     // setData({});
@@ -28,12 +28,7 @@ export const Grocery = () => {
 
   return (
     <>
-      <GroceryInput
-        handleInput={handleInput}
-        addItem={addItem}
-        name={name}
-        quanity={quantity}
-      />
+      <GroceryInput handleInput={handleInput} addItem={addItem} data={data} />
       <GroceryTable list={list} />
     </>
   );
