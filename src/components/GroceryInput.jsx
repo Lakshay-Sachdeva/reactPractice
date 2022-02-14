@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 
-export const GroceryInput = ({ handleInput, addItem, data }) => {
-  const { name, quantity } = data;
+export const GroceryInput = ({ handleInput }) => {
+  const [data, setData] = useState({
+    name: "",
+    quantity: ""
+  });
+  const textChange = (e) => {
+    const { name, value } = e.target;
+    setData({ ...data, [name]: value });
+  };
   return (
     <div>
       <h1>Grocery Requirement List</h1>
@@ -10,8 +17,7 @@ export const GroceryInput = ({ handleInput, addItem, data }) => {
         type="text"
         name="name"
         placeholder="Enter Grocery Name"
-        onInput={handleInput}
-        value={name}
+        onInput={textChange}
       />
       <br />
       <br />
@@ -20,12 +26,17 @@ export const GroceryInput = ({ handleInput, addItem, data }) => {
         type="text"
         name="quantity"
         placeholder="Enter Quantity"
-        onInput={handleInput}
-        value={quantity}
+        onInput={textChange}
       />
       <br />
       <br />
-      <button onClick={addItem}>Add Item</button>
+      <button
+        onClick={() => {
+          handleInput(data);
+        }}
+      >
+        Add Item
+      </button>
     </div>
   );
 };
